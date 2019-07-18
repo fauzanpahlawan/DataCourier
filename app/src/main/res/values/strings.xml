@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">DataCourier</string>
+    <string name="bt_collect_data">collect data</string>
+    <string name="bt_view_data">view data</string>
+    <string name="bt_start_delivery">start delivery</string>
+    <string name="bt_start_receiving">start receiving</string>
+    <string name="hint_url">example.com</string>
+    <string name="bt_get">get</string>
+    <string name="bt_save_data">save data</string>
+    <string name="tv_data_id_label">ID</string>
+    <string name="tv_data_suhu_label">Suhu</string>
+    <string name="tv_data_kelembaban_label">Kelembaban</string>
+
+    <!--indicator-->
+    <string name="online_indicator">You are online</string>
+    <string name="offline_indicator">You are offline</string>
+    <string name="discovering_indicator">Discovering peers..</string>
+    <string name="discovering_failed_indicator">Error: Discovery failed</string>
+    <string name="host_indicator">You are host</string>
+    <string name="client_indicator">You are client</string>
+
+    <!--label-->
+    <string name="id_kelembaban_suhu">id\tKelembaban\tsuhu</string>
+    <string name="devices">Devices</string>
+    <string name="tv_activity_log">Activity Log:</string>
+    <string name="bt_delete_all_data">Delete All Data</string>
+    <string name="des_button_of_collect_data">Button of Collect data</string>
+    <string name="tv_label_collect_data">Collect Data</string>
+    <string name="des_im_bt_view_data">Button of View Data</string>
+    <string name="tv_label_view_data">View Data</string>
+    <string name="des_im_bt_start_delivery">Button of Start Delivery</string>
+    <string name="tv_label_start_delivery">Start Delivery</string>
+    <string name="des_im_bt_start_receiving">Button of Start Receiving</string>
+    <string name="tv_label_start_receiving">Start Receiving</string>
+    <string name="centerImage_center_image_of_riplle">center_image_of_riplle</string>
+    <string name="activity_log_group_created">Group Created</string>
+    <string name="tv_data_content">Data Content</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor accumsan felis eget feugiat. Vivamus laoreet massa ac lorem convallis ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse augue dui, commodo ac auctor a, sollicitudin at tortor. Pellentesque id tortor massa. Ut in lectus quis augue gravida cursus vel nec felis. Nullam consectetur dictum orci vel varius. Praesent vitae ex non ante mollis consequat. Aenean hendrerit risus sed leo tincidunt, a efficitur nisi posuere. Proin id convallis neque. Donec euismod ut neque at bibendum. Phasellus viverra neque et sem ullamcorper fermentum bibendum ut tortor.</string>
+</resources>

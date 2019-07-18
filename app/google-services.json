@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1019136637341",
+    "firebase_url": "https://datacourier-e4c91.firebaseio.com",
+    "project_id": "datacourier-e4c91",
+    "storage_bucket": "datacourier-e4c91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019136637341:android:0f6a9528de20b775",
+        "android_client_info": {
+          "package_name": "com.example.fauza.datacourier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019136637341-2spem1r5lc880rancd9uha0jrm7vq4hu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fauza.datacourier",
+            "certificate_hash": "a0b63657ece7b1c22678efb42103bed428a2caaf"
+          }
+        },
+        {
+          "client_id": "1019136637341-egqupb51mgoi12egutpppqrciihfipbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcQPgHMC374uH8UuxgqasRjsGdIdjvScU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019136637341-egqupb51mgoi12egutpppqrciihfipbr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

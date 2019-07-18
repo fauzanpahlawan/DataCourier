@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay_activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_layout_background"
+    android:columnCount="2"
+    android:paddingLeft="10dp"
+    android:paddingTop="20dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="35dp"
+    android:rowCount="3">
+
+    <LinearLayout
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/im_bt_collect_data"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_image_button"
+            android:contentDescription="@string/des_button_of_collect_data"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_collect_data" />
+
+        <TextView
+            android:id="@+id/tv_label_collect_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_label_collect_data"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/im_bt_view_data"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_image_button"
+            android:contentDescription="@string/des_im_bt_view_data"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_view_data" />
+
+        <TextView
+            android:id="@+id/tv_label_view_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_label_view_data"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/im_bt_start_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_image_button"
+            android:contentDescription="@string/des_im_bt_start_delivery"
+
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_send_data" />
+
+        <TextView
+            android:id="@+id/tv_label_start_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_label_start_delivery"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/im_bt_start_receiving"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_image_button"
+            android:contentDescription="@string/des_im_bt_start_receiving"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_receive_data" />
+
+        <TextView
+            android:id="@+id/tv_label_start_receiving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_label_start_receiving"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_rowWeight="2"
+        android:layout_columnWeight="1"
+        android:layout_gravity="center" />
+
+</GridLayout>
