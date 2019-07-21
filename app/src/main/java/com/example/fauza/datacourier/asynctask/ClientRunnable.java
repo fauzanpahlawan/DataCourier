@@ -39,6 +39,7 @@ public class ClientRunnable implements Runnable {
                 if (out != null) {
                     out.close();
                     clientSocket.close();
+                    Log.v(Global.TAG, "Closing " + clientSocket.toString());
                 }
             } catch (Exception e) {
                 e.printStackTrace();
