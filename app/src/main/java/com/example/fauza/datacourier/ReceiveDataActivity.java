@@ -8,7 +8,6 @@ import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pGroup;
@@ -27,7 +26,6 @@ import com.example.fauza.datacourier.asynctask.CheckConnectionAsyncTask;
 import com.example.fauza.datacourier.asynctask.ReadDataAsyncTask;
 import com.example.fauza.datacourier.asynctask.ReceiverAsyncTask;
 import com.example.fauza.datacourier.asynctask.TestDataWriteAsyncTask;
-import com.example.fauza.datacourier.asynctask.VerboseAsyncTask;
 import com.example.fauza.datacourier.constant.Global;
 import com.example.fauza.datacourier.entity.DataEntity;
 import com.example.fauza.datacourier.entity.TestData;
@@ -51,8 +49,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ReceiveDataActivity extends AppCompatActivity implements CheckConnectionInterface, ReadDataInterface, ReceiverInterface, VerboseInterface {
-
-    Context mContest = this;
 
     @BindView(R.id.tv_activity_log)
     TextView tvActivityLog;
@@ -259,27 +255,25 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
             if (networkInfo != null) {
                 if (networkInfo.isConnected()) {
                     Log.v(Global.TAG, "networkInfo.isConnected");
-                    WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-                    Log.v(Global.TAG, wifiInfo.toString());
-                    String ssid = wifiInfo.getSSID().replaceAll(Global.REGEX_REMOVE_QUOTES, "");
                     if (wifiCredentialholder != null) {
                         DhcpInfo dhcp = wifiManager.getDhcpInfo();
                         String address = Formatter.formatIpAddress(dhcp.gateway);
-                        CommonMethod.appendTv(tvActivityLog, String.format("%s %s", "Connecting to", address));
-                        CommonMethod.recordTimeDataConnectToDevice();
-                        timeStartEnd = System.currentTimeMillis();
-                        TestData testData = new TestData(timeStampStart, timeStartEnd);
-                        TestDataWriteAsyncTask testDataWriteAsyncTask = new TestDataWriteAsyncTask(mContext, testData);
-                        testDataWriteAsyncTask.execute();
-                        CommonMethod.recordTimeDataTransferStart();
-                        CommonMethod.appendTv(tvActivityLog, "Connected");
-                        ReceiverAsyncTask receiverAsyncTask = new ReceiverAsyncTask(address, mContext, ReceiveDataActivity.this);
-                        CommonMethod.appendTv(tvActivityLog, "Send ping.");
-                        receiverAsyncTask.execute();
-//                        if (ssid.equalsIgnoreCase(wifiCredentialholder.SSID)) {
-//                        } else {
-//                            Log.v(Global.TAG, "ssid.isNotEqual");
-//                        }
+                        if (address.equalsIgnoreCase(wifiCredentialholder.IPAddress)) {
+                            Log.v(Global.TAG, "we got the correct one");
+                            CommonMethod.appendTv(tvActivityLog, String.format("%s %s", "Connecting to", address));
+                            CommonMethod.recordTimeDataConnectToDevice();
+                            timeStartEnd = System.currentTimeMillis();
+                            TestData testData = new TestData(timeStartEnd, timeStampStart);
+                            TestDataWriteAsyncTask testDataWriteAsyncTask = new TestDataWriteAsyncTask(mContext, testData);
+                            testDataWriteAsyncTask.execute();
+                            CommonMethod.recordTimeDataTransferStart();
+                            CommonMethod.appendTv(tvActivityLog, "Connected");
+                            ReceiverAsyncTask receiverAsyncTask = new ReceiverAsyncTask(address, mContext, ReceiveDataActivity.this);
+                            CommonMethod.appendTv(tvActivityLog, "Send ping.");
+                            receiverAsyncTask.execute();
+                        } else {
+                            Log.v(Global.TAG, "ssid.isNotEqual");
+                        }
                     } else {
                         Log.v(Global.TAG, "wifiCredentialholder.isNull");
                     }
@@ -287,7 +281,7 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
                     Log.v(Global.TAG, "networkInfo.isNotConnected");
                 }
             }
-            getConnectivityStatus(context);
+//            getConnectivityStatus(context);
         }
 
         public void getConnectivityStatus(Context context) {
@@ -316,11 +310,10 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
         super.onResume();
         registerReceiver(mReceiver, mIntentFilter);
         registerReceiver(networkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-
         discoverService();
 
-        CheckConnectionAsyncTask checkConnectionAsyncTask = new CheckConnectionAsyncTask(ReceiveDataActivity.this);
-        checkConnectionAsyncTask.execute();
+//        CheckConnectionAsyncTask checkConnectionAsyncTask = new CheckConnectionAsyncTask(ReceiveDataActivity.this);
+//        checkConnectionAsyncTask.execute();
 
     }
 
@@ -425,11 +418,9 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
     }
 
     @Override
-    public void appendText(String messages) {
+    public void dataReceiveStatus(String messages) {
         CommonMethod.appendTv(tvActivityLog, messages);
-        VerboseAsyncTask verboseAsyncTask = new VerboseAsyncTask(mContext, ReceiveDataActivity.this);
-        verboseAsyncTask.execute();
-        wifiManager.disconnect();
+        this.finish();
     }
 
     @Override

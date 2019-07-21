@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvLabelStartReceiving;
     @BindView(R.id.lay_activity_main)
     GridLayout layActivityMain;
-    @BindView(R.id.bt_delete_all_data)
+    @BindView(R.id.bt_delete_test_data)
     Button btDeleteAllData;
 
     @Override
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.im_bt_collect_data, R.id.im_bt_view_data, R.id.im_bt_start_delivery, R.id.im_bt_start_receiving})
+    @OnClick({R.id.im_bt_collect_data, R.id.im_bt_view_data, R.id.im_bt_start_delivery, R.id.im_bt_start_receiving, R.id.bt_delete_test_data})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.im_bt_collect_data:
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.im_bt_start_receiving:
                 CommonMethod.intent(MainActivity.this, ReceiveDataActivity.class);
                 break;
-            case R.id.bt_delete_all_data:
+            case R.id.bt_delete_test_data:
                 CommonMethod.intent(MainActivity.this, TestDataActivity.class);
                 break;
         }

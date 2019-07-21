@@ -14,10 +14,11 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.List;
 
-public class ReceiverAsyncTask extends AsyncTask<Void, Void, String> {
+public class ReceiverAsyncTask extends AsyncTask<Void, Void, Void> {
 
     private String hostIp;
     private boolean dataExist = false;
@@ -31,9 +32,10 @@ public class ReceiverAsyncTask extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected String doInBackground(Void... voids) {
+    protected Void doInBackground(Void... voids) {
         try {
-            Socket socket = new Socket(hostIp, Global.APP_PORT);
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress(hostIp, Global.APP_PORT), 5000);
             Log.v(Global.TAG, socket.toString());
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             Gson gson = new Gson();
@@ -49,20 +51,18 @@ public class ReceiverAsyncTask extends AsyncTask<Void, Void, String> {
             }
             in.close();
             socket.close();
-            return gson.toJson(data);
         } catch (IOException e) {
             e.printStackTrace();
             Log.v(Global.TAG, e.toString());
-            return null;
         }
+        return null;
     }
 
     @Override
-    protected void onPostExecute(String data) {
+    protected void onPostExecute(Void data) {
         if (dataExist) {
             CommonMethod.recordTimeDataTransferEnd();
-            receiverInterface.appendText("Data Received.");
-            receiverInterface.appendText(data);
+            receiverInterface.dataReceiveStatus("Data Received.");
         }
     }
 }

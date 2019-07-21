@@ -121,7 +121,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/bt_delete_all_data"
+        android:id="@+id/bt_delete_test_data"
         android:layout_rowWeight="2"
         android:layout_columnWeight="1"
         android:layout_gravity="center"

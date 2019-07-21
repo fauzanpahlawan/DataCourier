@@ -13,7 +13,9 @@
         android:layout_weight="1">
 
         <TextView
+            tools:text="Debug text"
             android:id="@+id/tv_test_data"
+            android:textColor="@color/colorBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </ScrollView>
