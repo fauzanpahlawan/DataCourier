@@ -26,9 +26,11 @@ import android.widget.Toast;
 import com.example.fauza.datacourier.asynctask.CheckConnectionAsyncTask;
 import com.example.fauza.datacourier.asynctask.ReadDataAsyncTask;
 import com.example.fauza.datacourier.asynctask.ReceiverAsyncTask;
+import com.example.fauza.datacourier.asynctask.TestDataWriteAsyncTask;
 import com.example.fauza.datacourier.asynctask.VerboseAsyncTask;
 import com.example.fauza.datacourier.constant.Global;
 import com.example.fauza.datacourier.entity.DataEntity;
+import com.example.fauza.datacourier.entity.TestData;
 import com.example.fauza.datacourier.interfaces.CheckConnectionInterface;
 import com.example.fauza.datacourier.interfaces.ReadDataInterface;
 import com.example.fauza.datacourier.interfaces.ReceiverInterface;
@@ -49,6 +51,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ReceiveDataActivity extends AppCompatActivity implements CheckConnectionInterface, ReadDataInterface, ReceiverInterface, VerboseInterface {
+
+    Context mContest = this;
 
     @BindView(R.id.tv_activity_log)
     TextView tvActivityLog;
@@ -74,6 +78,9 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
     WifiP2pManager mManager;
     WifiP2pManager.Channel mChannel;
     BroadcastReceiver mReceiver;
+
+    long timeStampStart;
+    long timeStartEnd;
 
     private WifiP2pDnsSdServiceRequest serviceRequest = null;
 
@@ -151,6 +158,7 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
                             wifiCredentialholder.password = wifiCredentials[2];
                             wifiCredentialholder.IPAddress = wifiCredentials[3];
                             CommonMethod.recordTimeDataFoundDevice();
+                            timeStampStart = System.currentTimeMillis();
                             //connect to the wifi
                             connectToWifi(wifiCredentialholder);
                             //get the device information to use as connect
@@ -259,6 +267,10 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
                         String address = Formatter.formatIpAddress(dhcp.gateway);
                         CommonMethod.appendTv(tvActivityLog, String.format("%s %s", "Connecting to", address));
                         CommonMethod.recordTimeDataConnectToDevice();
+                        timeStartEnd = System.currentTimeMillis();
+                        TestData testData = new TestData(timeStampStart, timeStartEnd);
+                        TestDataWriteAsyncTask testDataWriteAsyncTask = new TestDataWriteAsyncTask(mContext, testData);
+                        testDataWriteAsyncTask.execute();
                         CommonMethod.recordTimeDataTransferStart();
                         CommonMethod.appendTv(tvActivityLog, "Connected");
                         ReceiverAsyncTask receiverAsyncTask = new ReceiverAsyncTask(address, mContext, ReceiveDataActivity.this);

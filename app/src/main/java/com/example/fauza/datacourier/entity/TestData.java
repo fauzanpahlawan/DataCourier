@@ -16,12 +16,6 @@ public class TestData {
     @ColumnInfo(name = "timeStampEnd")
     private long timeStampEnd;
 
-    public TestData(int id, long timeStampStart, long timeStampEnd) {
-        this.id = id;
-        this.timeStampStart = timeStampStart;
-        this.timeStampEnd = timeStampEnd;
-    }
-
     public TestData(long timeStampStart, long timeStampEnd) {
         this.timeStampStart = timeStampStart;
         this.timeStampEnd = timeStampEnd;
