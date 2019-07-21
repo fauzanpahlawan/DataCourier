@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-
+    WifiManager wifiManager;
 
     @BindView(R.id.im_bt_collect_data)
     ImageButton imBtCollectData;
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tvLabelStartReceiving;
     @BindView(R.id.lay_activity_main)
     GridLayout layActivityMain;
-
-    WifiManager wifiManager;
+    @BindView(R.id.bt_delete_all_data)
+    Button btDeleteAllData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.im_bt_start_receiving:
                 CommonMethod.intent(MainActivity.this, ReceiveDataActivity.class);
+                break;
+            case R.id.bt_delete_all_data:
+                CommonMethod.intent(MainActivity.this, TestDataActivity.class);
                 break;
         }
     }

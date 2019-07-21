@@ -120,9 +120,11 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <TextView
+    <Button
+        android:id="@+id/bt_delete_all_data"
         android:layout_rowWeight="2"
         android:layout_columnWeight="1"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:text="@string/bt_view_data" />
 
 </GridLayout>
