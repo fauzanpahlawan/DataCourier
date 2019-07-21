@@ -43,7 +43,7 @@ public class ClientRunnable implements Runnable {
                     clientSocket.close();
                     timestampEnd = System.currentTimeMillis();
                     long timeDelta = timestampEnd - timestampStart;
-                    String log = String.format("%s %s %d%s", "to", clientSocket.toString(), timeDelta,"ms");
+                    String log = String.format("%s %s %d%s", "to", clientSocket.getInetAddress().toString(), timeDelta,"ms");
                     Log.v(Global.TEST_TAG, log);
                 }
             } catch (Exception e) {

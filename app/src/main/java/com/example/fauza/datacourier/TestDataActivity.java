@@ -3,6 +3,7 @@ package com.example.fauza.datacourier;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.fauza.datacourier.asynctask.DeleteTestDataAsyncTask;
@@ -19,7 +20,7 @@ import butterknife.OnClick;
 public class TestDataActivity extends AppCompatActivity implements TestDataReadInterface {
 
     @BindView(R.id.tv_test_data)
-    TextView tvTestData;
+    EditText tvTestData;
     @BindView(R.id.bt_delete_all_data)
     Button btDeleteAllData;
 
