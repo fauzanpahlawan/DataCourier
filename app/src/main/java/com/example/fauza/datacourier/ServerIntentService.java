@@ -47,7 +47,6 @@ public class ServerIntentService extends IntentService {
         while (true)
             try {
                 Socket clientSocket = serverSocket.accept();
-                Log.v(Global.TAG, "Accepting " + clientSocket.toString());
                 ClientRunnable clientRunnable = new ClientRunnable(clientSocket, mContext);
                 clientRunnable.run();
             } catch (IOException e) {

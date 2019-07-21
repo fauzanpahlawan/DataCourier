@@ -16,6 +16,8 @@ import java.util.List;
 public class ClientRunnable implements Runnable {
     private Socket clientSocket;
     private DataCourierDatabase dataCourierDatabase;
+    private long timestampStart;
+    private long timestampEnd;
 
     public ClientRunnable(Socket clientSocket, Context context) {
         this.clientSocket = clientSocket;
@@ -30,7 +32,7 @@ public class ClientRunnable implements Runnable {
             Gson gson = new Gson();
             String data = gson.toJson(dataEntities);
             out = new PrintWriter(clientSocket.getOutputStream(), true);
-            Log.v(Global.TAG, "Sending to " + clientSocket.toString());
+            timestampStart = System.currentTimeMillis();
             out.print(data);
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,7 +41,10 @@ public class ClientRunnable implements Runnable {
                 if (out != null) {
                     out.close();
                     clientSocket.close();
-                    Log.v(Global.TAG, "Closing " + clientSocket.toString());
+                    timestampEnd = System.currentTimeMillis();
+                    long timeDelta = timestampEnd - timestampStart;
+                    String log = String.format("%s %s %d%s", "to", clientSocket.toString(), timeDelta,"ms");
+                    Log.v(Global.TEST_TAG, log);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

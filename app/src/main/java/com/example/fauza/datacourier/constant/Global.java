@@ -40,6 +40,7 @@ public class Global {
 
     //RECORD TAGS
     public static final String TAG = "DATA_COURIER";
+    public static final String TEST_TAG = "DATA_COURIER_TEST";
     public static final String TAG_RECORD_ACTIVITY_LOG = "DATCOUR_ACTIVITY_LOG";
 
     //REGEX
@@ -48,5 +49,4 @@ public class Global {
     //Broadcast
     public static final String SOCKET_ACTION = "com.example.fauza.datacourier.socket_action";
     public static final String SOCKET_STATUS = "com.example.fauza.datacourier.socket_status";
-
 }
