@@ -76,7 +76,7 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
     BroadcastReceiver mReceiver;
 
     long timeStampStart;
-    long timeStartEnd;
+    long timeStampEnd;
 
     private WifiP2pDnsSdServiceRequest serviceRequest = null;
 
@@ -262,8 +262,8 @@ public class ReceiveDataActivity extends AppCompatActivity implements CheckConne
                             Log.v(Global.TAG, "we got the correct one");
                             CommonMethod.appendTv(tvActivityLog, String.format("%s %s", "Connecting to", address));
                             CommonMethod.recordTimeDataConnectToDevice();
-                            timeStartEnd = System.currentTimeMillis();
-                            TestData testData = new TestData(timeStartEnd, timeStampStart);
+                            timeStampEnd = System.currentTimeMillis();
+                            TestData testData = new TestData(timeStampEnd, timeStampStart);
                             TestDataWriteAsyncTask testDataWriteAsyncTask = new TestDataWriteAsyncTask(mContext, testData);
                             testDataWriteAsyncTask.execute();
                             CommonMethod.recordTimeDataTransferStart();
