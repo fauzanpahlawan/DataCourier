@@ -1,3 +1,3 @@
-# DataCourier2
+# DataCourier
 Android DTN Solution for remote IoT establishment.
 
