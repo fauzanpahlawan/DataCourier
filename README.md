@@ -9,8 +9,8 @@ Android DTN Solution for remote IoT establishment.
 <img src="website/screen01.jpg" width=300>
 <img src="website/screen02.jpg" width=300>
 <img src="website/screen03.jpg" width=300>
-<img src="website/screen04.jpg" width=300>
+<img src="website/screen04.png" width=300>
 <img src="website/screen05.jpg" width=300>
 <img src="website/screen06.jpg" width=300>
 <img src="website/screen07.jpg" width=300>
-<img src="website/screen08.jpg" width=300>
+<img src="website/screen08.png" width=300>
